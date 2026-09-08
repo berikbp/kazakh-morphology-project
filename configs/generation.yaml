@@ -1,0 +1,10 @@
+{
+    "do_sample": false,
+    "temperature": 0.0,
+    "top_p": 1.0,
+    "max_new_tokens": 200,
+    "repetition_penalty": 1.0,
+    "num_beams": 1,
+    "pad_token_id": "auto",
+    "seeds": [42, 123, 2026]
+}

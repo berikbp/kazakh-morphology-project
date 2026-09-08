@@ -1,0 +1,28 @@
+{
+    "baseline-v1": {
+        "description": "Initial unconstrained baseline across all primary models",
+        "models": ["sherkala-8b-nf4", "kazllm-8b-q4km", "qwen3-8b-q4km", "qwen3-1.7b-bf16", "sozkz-1b-bf16"],
+        "prompt_file": "data/prompts/morphology_v1.jsonl",
+        "seeds": [42],
+        "max_new_tokens": 200,
+        "do_sample": false
+    },
+    "quantization-comparison": {
+        "description": "Compare BF16 vs 4-bit for Qwen3 1.7B",
+        "model": "qwen3-1.7b",
+        "precisions": ["bf16", "4bit"],
+        "prompt_file": "data/prompts/morphology_v1.jsonl",
+        "seeds": [42],
+        "max_new_tokens": 200,
+        "do_sample": false
+    },
+    "constrained-decoding": {
+        "description": "Compare baseline vs constrained decoding",
+        "model": "qwen3-1.7b-bf16",
+        "conditions": ["baseline", "hard_constraint"],
+        "prompt_file": "data/prompts/morphology_v1.jsonl",
+        "seeds": [42],
+        "max_new_tokens": 200,
+        "do_sample": false
+    }
+}

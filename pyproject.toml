@@ -1,13 +1,29 @@
 [project]
 name = "kazakh-morphology-project"
 version = "0.1.0"
-description = "Add your description here"
+description = "Morphologically constrained decoding for Kazakh as an agglutinative language"
 readme = "README.md"
 authors = [
     { name = "berikbp", email = "beriktarakov7@gmail.com" }
 ]
 requires-python = ">=3.12"
-dependencies = []
+dependencies = [
+    "torch",
+    "transformers",
+    "accelerate",
+    "bitsandbytes",
+    "safetensors",
+    "sentencepiece",
+    "huggingface-hub",
+    "numpy",
+    "pandas",
+    "psutil",
+    "pynvml",
+    "tqdm",
+    "pydantic",
+    "rich",
+    "pyyaml>=6.0.3",
+]
 
 [project.scripts]
 kazakh-morphology-project = "kazakh_morphology_project:main"
@@ -15,3 +31,18 @@ kazakh-morphology-project = "kazakh_morphology_project:main"
 [build-system]
 requires = ["uv_build>=0.12.6,<0.13.0"]
 build-backend = "uv_build"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+
+[tool.uv]
+extra-index-url = ["https://download.pytorch.org/whl/cu124"]
+
+[tool.ruff]
+line-length = 100
+
+[dependency-groups]
+dev = [
+    "pytest>=9.1.1",
+    "ruff>=0.16.6",
+]

@@ -1,0 +1,82 @@
+{
+    "models": [
+        {
+            "id": "sherkala-8b-nf4",
+            "name": "Sherkala 8B Chat",
+            "repository": "inceptionai/Llama-3.1-Sherkala-8B-Chat",
+            "architecture": "Llama 3.1",
+            "parameters": "8B",
+            "languages": ["kk", "en"],
+            "kazakh_specific": true,
+            "quantization": "nf4",
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 5000
+        },
+        {
+            "id": "kazllm-8b-q4km",
+            "name": "ISSAI KazLLM 8B",
+            "repository": "issai/LLama-3.1-KazLLM-1.0-8B",
+            "architecture": "Llama 3.1",
+            "parameters": "8B",
+            "languages": ["kk", "en"],
+            "kazakh_specific": true,
+            "quantization": "4bit",
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 5000
+        },
+        {
+            "id": "qwen3-8b-q4km",
+            "name": "Qwen3 8B",
+            "repository": "Qwen/Qwen3-8B",
+            "architecture": "Qwen3",
+            "parameters": "8B",
+            "languages": ["multilingual"],
+            "kazakh_specific": false,
+            "quantization": "4bit",
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 5000
+        },
+        {
+            "id": "qwen3-1.7b-bf16",
+            "name": "Qwen3 1.7B",
+            "repository": "Qwen/Qwen3-1.7B",
+            "architecture": "Qwen3",
+            "parameters": "1.7B",
+            "languages": ["multilingual"],
+            "kazakh_specific": false,
+            "quantization": null,
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 4000
+        },
+        {
+            "id": "qwen3-1.7b-nf4",
+            "name": "Qwen3 1.7B (4-bit)",
+            "repository": "Qwen/Qwen3-1.7B",
+            "architecture": "Qwen3",
+            "parameters": "1.7B",
+            "languages": ["multilingual"],
+            "kazakh_specific": false,
+            "quantization": "4bit",
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 2000
+        },
+        {
+            "id": "sozkz-1b-bf16",
+            "name": "SozKZ 1B Kazakh",
+            "repository": "stukenov/sozkz-core-llama-1b-kk-instruct-v2",
+            "architecture": "Llama",
+            "parameters": "1B",
+            "languages": ["kk"],
+            "kazakh_specific": true,
+            "quantization": null,
+            "backend": "transformers",
+            "dtype": "bfloat16",
+            "max_vram_mb": 3000
+        }
+    ]
+}

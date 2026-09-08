@@ -8,3 +8,24 @@ wheels/
 
 # Virtual environments
 .venv
+
+# Model weights and Hugging Face cache
+models/
+*.bin
+*.safetensors
+*.gguf
+.cache/
+huggingface/
+
+# Large artifacts
+results/raw/
+*.pt
+*.pth
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
