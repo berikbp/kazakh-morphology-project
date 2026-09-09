@@ -28,9 +28,9 @@ Kazakh is an agglutinative language where words are formed by adding multiple su
 | Qwen3 1.7B | 1.7B | BF16 | 3335 MB | 7.7 | Tested |
 | Qwen3 1.7B | 1.7B | 4-bit NF4 | 1341 MB | 9.2 | Tested |
 | Qwen3 8B | 8B | 4-bit NF4 | 5876 MB | 5.4 | Tested |
-| Sherkala 8B | 8B | 4-bit NF4 | — | — | Gated (need login) |
-| KazLLM 8B | 8B | 4-bit NF4 | — | — | Gated (need login) |
-| SozKZ 1B | 1B | BF16 | — | — | Gated (need login) |
+| **Sherkala 8B** | **8B** | **FP16 (CPU)** | **~16 GB** | **~1.4** | **Tested** |
+| KazLLM 8B | 8B | — | — | — | Gated |
+| SozKZ 1B | 1B | — | — | — | Gated |
 
 ## 5. Baseline Results
 
@@ -46,6 +46,16 @@ Kazakh is an agglutinative language where words are formed by adding multiple su
   - Cases: "кітапқа (датив), баланы (аккузатив)" ✓
 - Still struggles with complex instructions
 - Still produces repetitive loops
+
+### Sherkala 8B (CPU)
+- **9/15 prompts fully correct (67%)**
+- Correct plural forms: қалалар, көшелер, ауылдар, қыздар, ұлдар
+- Correct possessive forms: кітабым, кітабың, кітабы
+- Correct case forms: кітап, кітаптың, кітапта, кітапты, кітаптан, кітаппен
+- Correct past tense: барды, келді, жазды, оқыды, жеді
+- Correct loanword adaptation: университетке, компьютерге, телефонға
+- Can write free text about village life
+- Main failures: sometimes repeats prompt or gives wrong task
 
 ## 6. Quantization Study
 
@@ -82,27 +92,30 @@ Tests: 18 passing
 
 ## 9. Conclusions
 
-1. **Both tested models struggle with Kazakh instruction following** — they rephrase prompts and loop instead of performing tasks
-2. **Qwen3 8B produces some correct morphological forms** — showing that larger models have better Kazakh能力
-3. **4-bit quantization reduces VRAM by 60% with no quality loss** — enabling larger models on consumer GPUs
-4. **Constrained decoding adds only 7% overhead** — making it practical for real use
-5. **The morphology analyzer correctly blocks illegal forms** — with fallback for unknown words
+1. **Sherkala is 10x better than Qwen3** — 67% vs 7% success rate on morphology tasks
+2. **Qwen3 models struggle with Kazakh** — they rephrase prompts and loop instead of performing tasks
+3. **Sherkala produces good Kazakh** — it knows plural, case, and possessive rules
+4. **4-bit quantization reduces VRAM by 60% with no quality loss** — enabling larger models on consumer GPUs
+5. **Constrained decoding adds only 7% overhead** — making it practical for real use
+6. **Constrained decoding made Qwen3 worse** — blocked valid tokens, produced gibberish
+7. **The morphology analyzer correctly blocks illegal forms** — with fallback for unknown words
 
 ## 10. Limitations
 
-- Only 2 of 5 planned models tested (3 are gated)
+- Only 3 of 5 planned models tested (2 are gated)
 - Small prompt dataset (15 items)
 - No human annotation yet
 - Morphology rules are incomplete (subset of Kazakh)
 - No chat template testing
+- Sherkala runs on CPU (too large for 8GB VRAM)
 
 ## 11. Next Steps (If Continued)
 
-1. Get HuggingFace access for Sherkala/KazLLM/SozKZ
-2. Test with chat template formatting
+1. Get HuggingFace access for KazLLM and SozKZ
+2. Test Sherkala with chat template formatting (may improve results)
 3. Expand prompt dataset to 30-100 items
 4. Human annotation of morphology errors
-5. Test constrained decoding on Kazakh-specific models
+5. Test constrained decoding on Sherkala (catch the 33% of errors)
 6. Compare constrained vs unconstrained output quality
 
 ## 12. Files
